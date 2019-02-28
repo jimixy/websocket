@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="clock"></div>
+  <script>
+  setInterval(() => {
+    fetch('http://localhost:8080/clock').then((res)=>{
+      console.log('res1', res);
+      // res.json() json数据
+      // res.blob() 图片资源
+      return res.text()
+    }).then((res)=>{
+      console.log('res2', res);
+      debugger;
+    });
+  }, 1000);
+  </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="clock"></div>
+  <script>
+    // 长轮询
+    function send() {
+      fetch('http://localhost:8080/clock').then((res) => {
+        console.log('res1', res);
+        // res.json() json数据
+        // res.blob() 图片资源
+        return res.text()
+      }).then((res) => {
+        console.log('res2', res);
+        // 在上一次成功后再发第二次请求;
+        send()
+      });
+    }
+    send()
+  </script>
+</body>
+
+</html>
